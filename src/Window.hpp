@@ -13,10 +13,11 @@ namespace Nutra::Core {
             Window(std::string_view name, int x, int y, int width, int height, Uint32 flags);
             ~Window();
             std::pair<int, int> getWindowSize(Window & window);
-            SDL_Window * getSDLWindow() const;
             void show() const;
+            friend class Renderer;
 
         private:
+            SDL_Window * getSDLWindow() const;
             SDL_Window * m_Window;
     };
 } // namespace Nutra::Core
