@@ -1,48 +1,20 @@
-#include <stdio.h> /* printf and fprintf */
+#include "Application.hpp"
 
-#include "SDL2/SDL.h" 
+class ExampleApplication : public Nutra::Core::Application {
+    public:
+        ExampleApplication() : Application("Example") {
+        }
 
-/* Sets constants */
-#define WIDTH 800
-#define HEIGHT 600
-#define DELAY 3000
+        ~ExampleApplication() {
+        }
+};
 
-int main (int argc, char **argv)
-{
-  /* Initialises data */
-  SDL_Window *window = NULL;
-  
-  /*
-  * Initialises the SDL video subsystem (as well as the events subsystem).
-  * Returns 0 on success or a negative error code on failure using SDL_GetError().
-  */
-  if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-    fprintf(stderr, "SDL failed to initialise: %s\n", SDL_GetError());
-    return 1;
-  }
-
-  /* Creates a SDL window */
-  window = SDL_CreateWindow("SDL Example", /* Title of the SDL window */
-			    SDL_WINDOWPOS_UNDEFINED, /* Position x of the window */
-			    SDL_WINDOWPOS_UNDEFINED, /* Position y of the window */
-			    WIDTH, /* Width of the window in pixels */
-			    HEIGHT, /* Height of the window in pixels */
-			    0); /* Additional flag(s) */
-
-  /* Checks if window has been created; if not, exits program */
-  if (window == NULL) {
-    fprintf(stderr, "SDL window failed to initialise: %s\n", SDL_GetError());
-    return 1;
-  }
-
-  /* Pauses all SDL subsystems for a variable amount of milliseconds */
-  SDL_Delay(DELAY);
-
-  /* Frees memory */
-  SDL_DestroyWindow(window);
-  
-  /* Shuts down all SDL subsystems */
-  SDL_Quit(); 
-  
-  return 0;
+int main(int argc, char * argv[]) {
+    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+        exit(1);
+    }
+    atexit(SDL_Quit);
+    auto game = std::make_unique<ExampleApplication>();
+    game->run();
+    return 0;
 }

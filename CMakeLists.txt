@@ -11,5 +11,11 @@ set(CMAKE_C_STANDARD_REQUIRED True)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(AddDependency)
 include(AddNutra)
+include(Options)
+
+# Options
+message(STATUS "Options:")
+nutra_option(ENABLE_TESTS "Enable tests" ON) # Does nothing at the moment
+message(STATUS "")
 
 add_subdirectory(src)
