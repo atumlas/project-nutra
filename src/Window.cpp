@@ -17,10 +17,6 @@ std::pair<int, int> Nutra::Core::Window::getWindowSize(Nutra::Core::Window & win
     return std::make_pair(w, h);
 }
 
-SDL_Window * Nutra::Core::Window::getSDLWindow() const {
-    return m_Window;
-}
-
 void Nutra::Core::Window::show() const {
     SDL_ShowWindow(m_Window);
 }

@@ -1,7 +1,7 @@
 #include "Renderer.hpp"
 
 Nutra::Core::Renderer::Renderer(std::shared_ptr<Window> window, int index, Uint32 flags) : m_Window(window) {
-    m_Renderer = SDL_CreateRenderer(window->getSDLWindow(), index, flags);
+    m_Renderer = SDL_CreateRenderer(window->m_Window, index, flags);
     if (!m_Renderer) {
         exit(1);
     }
