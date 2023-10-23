@@ -12,8 +12,8 @@ namespace Nutra::Core {
         public:
             Window(std::string_view name, int x, int y, int width, int height, Uint32 flags);
             ~Window();
-            std::pair<int, int> getWindowSize(Window & window);
-            void show() const;
+            [[nodiscard]] std::pair<int, int> getWindowSize(Window & window) noexcept;
+            void show() const noexcept;
 
             friend class Renderer;
 

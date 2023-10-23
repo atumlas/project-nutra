@@ -16,7 +16,7 @@ void Nutra::Core::Application::initialize() {
     m_Running  = true;
 }
 
-void Nutra::Core::Application::run() {
+void Nutra::Core::Application::run() noexcept {
     m_Window->show();
     while (m_Running) {
         handleEvents();
@@ -25,7 +25,7 @@ void Nutra::Core::Application::run() {
     }
 }
 
-void Nutra::Core::Application::handleEvents() {
+void Nutra::Core::Application::handleEvents() noexcept {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
@@ -38,11 +38,11 @@ void Nutra::Core::Application::handleEvents() {
     }
 }
 
-void Nutra::Core::Application::render() {
+void Nutra::Core::Application::render() noexcept {
     m_Renderer->setDrawColor(0, 0, 0, 0);
     m_Renderer->clear();
     m_Renderer->present();
 }
 
-void Nutra::Core::Application::update() {
+void Nutra::Core::Application::update() noexcept {
 }

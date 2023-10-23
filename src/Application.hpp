@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <string_view>
 
 #include "Renderer.hpp"
 #include "Window.hpp"
@@ -15,19 +16,19 @@ namespace Nutra::Core {
             explicit Application(std::string name);
             virtual ~Application() = default;
 
-            void initialize();
-            void run();
+            void run() noexcept;
 
         private:
             std::string m_ApplicationName;
 
-            std::shared_ptr<Window> m_Window     = 0;
-            std::unique_ptr<Renderer> m_Renderer = 0;
+            std::shared_ptr<Window> m_Window;
+            std::unique_ptr<Renderer> m_Renderer;
 
             bool m_Running;
 
-            void handleEvents();
-            void update();
-            void render();
+            void initialize();
+            void handleEvents() noexcept;
+            void update() noexcept;
+            void render() noexcept;
     };
 } // namespace Nutra::Core

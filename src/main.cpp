@@ -14,7 +14,12 @@ int main(int argc, char * argv[]) {
         exit(1);
     }
     atexit(SDL_Quit);
-    auto game = std::make_unique<ExampleApplication>();
-    game->run();
+    try {
+        auto game = std::make_unique<ExampleApplication>();
+        game->run();
+    } catch (std::exception & e) {
+        std::cerr << e.what() << std::endl;
+        exit(1);
+    }
     return 0;
 }

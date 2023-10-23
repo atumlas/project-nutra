@@ -11,9 +11,9 @@ namespace Nutra::Core {
         public:
             Renderer(std::shared_ptr<Window> window, int index, Uint32 flags);
             ~Renderer();
-            void clear();
-            void setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
-            void present();
+            void clear() noexcept;
+            void setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) noexcept;
+            void present() noexcept;
 
         private:
             SDL_Renderer * m_Renderer;
