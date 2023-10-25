@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 Nutra::Core::Renderer::Renderer(std::shared_ptr<Window> window, int index, Uint32 flags) : m_Window(window) {
-    m_Renderer = SDL_CreateRenderer(window->m_Window, index, flags);
+    m_Renderer = window->createRenderer(window->m_Window, index, flags);
     if (!m_Renderer) {
         throw new std::runtime_error("Failed to create renderer");
     }

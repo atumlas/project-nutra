@@ -7,20 +7,22 @@
 #include <string_view>
 
 #include "Renderer.hpp"
+#include "SDL_Instance.hpp"
 #include "Window.hpp"
 
 namespace Nutra::Core {
-    class Application {
+    class Game {
         public:
-            explicit Application(char const * name);
-            explicit Application(std::string name);
-            virtual ~Application() = default;
+            explicit Game(std::shared_ptr<SDL_Instance> sdl, char const * name);
+            explicit Game(std::shared_ptr<SDL_Instance> sdl, std::string name);
+            ~Game() = default;
 
             void run() noexcept;
 
         private:
             std::string m_ApplicationName;
 
+            std::shared_ptr<SDL_Instance> m_SDL_Instance;
             std::shared_ptr<Window> m_Window;
             std::unique_ptr<Renderer> m_Renderer;
 

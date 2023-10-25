@@ -1,0 +1,7 @@
+file(GLOB_RECURSE ENGINE_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+file(GLOB_RECURSE ENGINE_HEADER_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp)
+
+add_nutra_library(${PROJECT_NAME}-Engine ${ENGINE_SOURCE_FILES} ${ENGINE_HEADER_FILES})
+
+target_link_libraries(${PROJECT_NAME}-Engine SDL2-static)
+target_include_directories(${PROJECT_NAME}-Engine PUBLIC ${SDL_INCLUDE_DIRS})

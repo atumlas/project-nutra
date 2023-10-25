@@ -18,4 +18,9 @@ message(STATUS "Options:")
 nutra_option(ENABLE_TESTS "Enable tests" ON) # Does nothing at the moment
 message(STATUS "")
 
-add_subdirectory(src)
+# Dependencies
+add_github_dependency(SDL libsdl-org/SDL release-2.28.3)
+
+# Subdirectories
+add_subdirectory(engine)
+add_subdirectory(game)
