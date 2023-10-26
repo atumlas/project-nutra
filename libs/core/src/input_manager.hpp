@@ -6,7 +6,7 @@
 
 #include "input_state.hpp"
 
-class InputManagerTest;
+class InputManagerParameterizedTestFixture;
 
 namespace Nutra::Core {
     class InputManager {
@@ -17,7 +17,9 @@ namespace Nutra::Core {
             }
             void updateState(SDL_Event & event);
             InputState & getCurrentState() const noexcept;
-            friend class InputManagerTest;
+
+            // Test fixture
+            friend class InputManagerParameterizedTestFixture;
 
         private:
             InputManager();

@@ -15,7 +15,7 @@ include(Options)
 
 # Options
 message(STATUS "Options:")
-nutra_option(ENABLE_TESTS "Enable tests" OFF) # Does nothing at the moment
+nutra_option(ENABLE_TESTS "Enable tests" OFF)
 message(STATUS "")
 
 # Dependencies
