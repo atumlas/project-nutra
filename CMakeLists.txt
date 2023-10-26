@@ -15,12 +15,12 @@ include(Options)
 
 # Options
 message(STATUS "Options:")
-nutra_option(ENABLE_TESTS "Enable tests" ON) # Does nothing at the moment
+nutra_option(ENABLE_TESTS "Enable tests" OFF) # Does nothing at the moment
 message(STATUS "")
 
 # Dependencies
 add_github_dependency(SDL libsdl-org/SDL release-2.28.3)
 
 # Subdirectories
-add_subdirectory(engine)
-add_subdirectory(game)
+add_subdirectory(libs)
+add_subdirectory(src)
