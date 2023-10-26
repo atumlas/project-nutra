@@ -1,11 +1,12 @@
 #include "SDL_Instance.hpp"
 
+#include <format>
 #include <stdexcept>
 #include <string>
 
 Nutra::Core::SDL_Instance::SDL_Instance() {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-        throw new std::runtime_error("SDL could not initialize! SDL_Error: " + std::string(SDL_GetError()));
+        throw new std::runtime_error(std::format("SDL could not initialize! SDL_Error: {}", SDL_GetError()));
     }
 }
 

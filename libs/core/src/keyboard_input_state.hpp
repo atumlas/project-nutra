@@ -12,7 +12,7 @@ namespace Nutra::Core {
         public:
             KeyboardInputState()  = default;
             ~KeyboardInputState() = default;
-            bool isKeyDown(KeyCode & key) const noexcept;
+            bool isKeyDown(KeyCode key) const noexcept;
             friend class InputManager;
 
         private:

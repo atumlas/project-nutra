@@ -22,5 +22,5 @@ message(STATUS "")
 add_github_dependency(SDL libsdl-org/SDL release-2.28.3)
 
 # Subdirectories
-add_subdirectory(engine)
-add_subdirectory(game)
+add_subdirectory(libs)
+add_subdirectory(src)

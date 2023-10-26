@@ -137,82 +137,82 @@ Nutra::Core::KeyCode Nutra::Core::convertSDLKeyCodeToNutraKeyCode(SDL_Keycode & 
         return Nutra::Core::KeyCode::BACKQUOTE;
         break;
     case SDLK_a:
-        return Nutra::Core::KeyCode::a;
+        return Nutra::Core::KeyCode::A;
         break;
     case SDLK_b:
-        return Nutra::Core::KeyCode::b;
+        return Nutra::Core::KeyCode::B;
         break;
     case SDLK_c:
-        return Nutra::Core::KeyCode::c;
+        return Nutra::Core::KeyCode::C;
         break;
     case SDLK_d:
-        return Nutra::Core::KeyCode::d;
+        return Nutra::Core::KeyCode::D;
         break;
     case SDLK_e:
-        return Nutra::Core::KeyCode::e;
+        return Nutra::Core::KeyCode::E;
         break;
     case SDLK_f:
-        return Nutra::Core::KeyCode::f;
+        return Nutra::Core::KeyCode::F;
         break;
     case SDLK_g:
-        return Nutra::Core::KeyCode::g;
+        return Nutra::Core::KeyCode::G;
         break;
     case SDLK_h:
-        return Nutra::Core::KeyCode::h;
+        return Nutra::Core::KeyCode::H;
         break;
     case SDLK_i:
-        return Nutra::Core::KeyCode::i;
+        return Nutra::Core::KeyCode::I;
         break;
     case SDLK_j:
-        return Nutra::Core::KeyCode::j;
+        return Nutra::Core::KeyCode::J;
         break;
     case SDLK_k:
-        return Nutra::Core::KeyCode::k;
+        return Nutra::Core::KeyCode::K;
         break;
     case SDLK_l:
-        return Nutra::Core::KeyCode::l;
+        return Nutra::Core::KeyCode::L;
         break;
     case SDLK_m:
-        return Nutra::Core::KeyCode::m;
+        return Nutra::Core::KeyCode::M;
         break;
     case SDLK_n:
-        return Nutra::Core::KeyCode::n;
+        return Nutra::Core::KeyCode::N;
         break;
     case SDLK_o:
-        return Nutra::Core::KeyCode::o;
+        return Nutra::Core::KeyCode::O;
         break;
     case SDLK_p:
-        return Nutra::Core::KeyCode::p;
+        return Nutra::Core::KeyCode::P;
         break;
     case SDLK_q:
-        return Nutra::Core::KeyCode::q;
+        return Nutra::Core::KeyCode::Q;
         break;
     case SDLK_r:
-        return Nutra::Core::KeyCode::r;
+        return Nutra::Core::KeyCode::R;
         break;
     case SDLK_s:
-        return Nutra::Core::KeyCode::s;
+        return Nutra::Core::KeyCode::S;
         break;
     case SDLK_t:
-        return Nutra::Core::KeyCode::t;
+        return Nutra::Core::KeyCode::T;
         break;
     case SDLK_u:
-        return Nutra::Core::KeyCode::u;
+        return Nutra::Core::KeyCode::U;
         break;
     case SDLK_v:
-        return Nutra::Core::KeyCode::v;
+        return Nutra::Core::KeyCode::V;
         break;
     case SDLK_w:
-        return Nutra::Core::KeyCode::w;
+        return Nutra::Core::KeyCode::W;
         break;
     case SDLK_x:
-        return Nutra::Core::KeyCode::x;
+        return Nutra::Core::KeyCode::X;
         break;
     case SDLK_y:
-        return Nutra::Core::KeyCode::y;
+        return Nutra::Core::KeyCode::Y;
         break;
     case SDLK_z:
-        return Nutra::Core::KeyCode::z;
+        return Nutra::Core::KeyCode::Z;
         break;
     case SDLK_CAPSLOCK:
         return Nutra::Core::KeyCode::CAPSLOCK;
