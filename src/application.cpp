@@ -1,4 +1,4 @@
-#include "Game.hpp"
+#include "application.hpp"
 
 #include "../libs/core/src/input_manager.hpp"
 
