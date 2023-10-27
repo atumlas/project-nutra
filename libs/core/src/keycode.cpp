@@ -741,3 +741,20 @@ Nutra::Core::KeyCode Nutra::Core::convertSDLKeyCodeToNutraKeyCode(SDL_Keycode & 
         throw std::runtime_error("Unhandled SDL_Nutra::Core::KeyCode");
     }
 }
+
+Nutra::Core::KeyCode Nutra::Core::convertSDLMouseButtonToNutraKeyCode(uint8_t mouseButtonIndex) {
+    switch (mouseButtonIndex) {
+    case SDL_BUTTON_LEFT:
+        return Nutra::Core::KeyCode::MOUSE_BUTTON_LEFT;
+        break;
+    case SDL_BUTTON_MIDDLE:
+        return Nutra::Core::KeyCode::MOUSE_BUTTON_MIDDLE;
+        break;
+    case SDL_BUTTON_RIGHT:
+        return Nutra::Core::KeyCode::MOUSE_BUTTON_RIGHT;
+        break;
+
+    default:
+        throw std::runtime_error("Unhandled SDL_Nutra::Core::KeyCode");
+    }
+}

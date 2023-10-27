@@ -29,7 +29,7 @@ TEST_F(InputManagerTest, handlesKeyDown) {
     inputManager->updateState(event);
 
     // Assert
-    ASSERT_TRUE(inputManager->getCurrentState().getKeyboardInputState().isKeyDown(KeyCode::A));
+    ASSERT_TRUE(inputManager->getCurrentState().isKeyDown(KeyCode::A));
 }
 
 TEST_F(InputManagerTest, handlesKeyUp) {
@@ -46,7 +46,7 @@ TEST_F(InputManagerTest, handlesKeyUp) {
     inputManager->updateState(upEvent);
 
     // Assert
-    ASSERT_FALSE(inputManager->getCurrentState().getKeyboardInputState().isKeyDown(KeyCode::A));
+    ASSERT_FALSE(inputManager->getCurrentState().isKeyDown(KeyCode::A));
 }
 
 TEST_F(InputManagerTest, canMapActionToState) {

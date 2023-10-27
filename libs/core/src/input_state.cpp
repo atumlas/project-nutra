@@ -1,14 +1,14 @@
 #include "input_state.hpp"
 
-Nutra::Core::InputState::InputState() {
-    m_MouseInputState    = std::make_unique<MouseInputState>();
-    m_KeyboardInputState = std::make_unique<KeyboardInputState>();
+bool Nutra::Core::InputState::isKeyDown(KeyCode key) const noexcept {
+    uint8_t keyAsInt = static_cast<uint8_t>(key);
+    return m_keyState[keyAsInt / 64] & (1ULL << (keyAsInt % 64));
 }
 
-Nutra::Core::MouseInputState & Nutra::Core::InputState::getMouseInputState() const noexcept {
-    return *m_MouseInputState;
+[[nodiscard]] int Nutra::Core::InputState::getMouseX() const noexcept {
+    return m_MouseX;
 }
 
-Nutra::Core::KeyboardInputState & Nutra::Core::InputState::getKeyboardInputState() const noexcept {
-    return *m_KeyboardInputState;
+[[nodiscard]] int Nutra::Core::InputState::getMouseY() const noexcept {
+    return m_MouseY;
 }

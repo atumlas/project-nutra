@@ -248,6 +248,10 @@ namespace Nutra::Core {
         SOFTRIGHT,
         CALL,
         ENDCALL,
+        MOUSE_BUTTON_LEFT,
+        MOUSE_BUTTON_MIDDLE,
+        MOUSE_BUTTON_RIGHT,
     };
     KeyCode convertSDLKeyCodeToNutraKeyCode(SDL_Keycode & sdlKeyCode);
+    KeyCode convertSDLMouseButtonToNutraKeyCode(uint8_t sdlMouseButton);
 } // namespace Nutra::Core
