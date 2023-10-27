@@ -2,5 +2,5 @@
 
 bool Nutra::Core::KeyboardInputState::isKeyDown(KeyCode key) const noexcept {
     uint8_t keyAsInt = static_cast<uint8_t>(key);
-    return m_keyBoardState[keyAsInt / 64] & (1 << (keyAsInt % 64));
+    return m_keyBoardState[keyAsInt / 64] & (1ULL << (keyAsInt % 64));
 }
