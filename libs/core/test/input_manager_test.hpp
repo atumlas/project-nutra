@@ -53,7 +53,7 @@ TEST_F(InputManagerTest, canMapActionToState) {
     // Arrange
     SDL_Event event;
     event.type           = SDL_KEYDOWN;
-    event.key.keysym.sym = SDLK_a;
+    event.key.keysym.sym = SDLK_LEFT;
 
     // Act
     inputManager->updateState(event);

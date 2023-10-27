@@ -1,10 +1,10 @@
 #include "input_manager.hpp"
 
+#include <algorithm>
+
 Nutra::Core::InputManager::InputManager() {
     m_CurrentInputState = std::make_unique<InputState>();
-    // TODO: Read keymap from file and set it to their default values only if the file is not found
     setDefaultKeyMap();
-    // TODO: Store the default keymap in a file
 }
 
 void Nutra::Core::InputManager::setDefaultKeyMap() {
@@ -56,11 +56,10 @@ Nutra::Core::InputState & Nutra::Core::InputManager::getCurrentState() const noe
 bool Nutra::Core::InputManager::isActionDown(Action action) const noexcept {
     KeyCodeMapping keyCodeMapping = m_ActionToKeyMap.at(action);
     bool isKeyDown                = false;
-    for (int i = 0; i < 4; ++i) {
-        isKeyDown = m_CurrentInputState->m_KeyboardInputState->m_keyBoardState[i] & keyCodeMapping[i];
-        if (isKeyDown) {
-            break;
-        }
-    }
+    int counter                   = 0;
+    (void)std::all_of(keyCodeMapping.begin(), keyCodeMapping.end(), [&](auto & mapping) {
+        isKeyDown = m_CurrentInputState->m_KeyboardInputState->m_keyBoardState[counter++] & mapping;
+        return !isKeyDown;
+    });
     return isKeyDown;
 }

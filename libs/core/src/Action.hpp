@@ -5,8 +5,6 @@ namespace Nutra::Core {
         MOVE_LEFT,
         MOVE_RIGHT,
         MOVE_UP,
-        MOVE_DOWN,
-        JUMP,
-        SHOOT
+        MOVE_DOWN
     };
 } // namespace Nutra::Core
