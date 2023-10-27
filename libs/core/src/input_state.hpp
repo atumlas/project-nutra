@@ -3,7 +3,7 @@
 #include <array>
 #include <memory>
 
-#include "keycodes.hpp"
+#include "keycode.hpp"
 
 namespace Nutra::Core {
     class InputManager;

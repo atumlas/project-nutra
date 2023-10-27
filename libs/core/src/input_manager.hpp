@@ -8,8 +8,9 @@
 
 #include "action.hpp"
 #include "input_state.hpp"
+#include "keycode.hpp"
 #include "keycode_mapping.hpp"
-#include "keycodes.hpp"
+
 
 class InputManagerTest;
 
@@ -24,7 +25,7 @@ namespace Nutra::Core {
             InputState & getCurrentState() const noexcept;
             bool isActionDown(Action action) const noexcept;
 
-            // Test fixture
+            // friendly Test fixture :)
             friend class InputManagerTest;
 
         private:

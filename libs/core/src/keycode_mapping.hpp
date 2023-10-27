@@ -3,7 +3,7 @@
 #include <array>
 #include <initializer_list>
 
-#include "keycodes.hpp"
+#include "keycode.hpp"
 
 namespace Nutra::Core {
     class KeyCodeMapping {
