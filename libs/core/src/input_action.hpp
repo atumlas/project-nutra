@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Nutra::Core {
-    enum class Action {
+    enum class INPUT_ACTION {
         MOVE_LEFT,
         MOVE_RIGHT,
         MOVE_UP,

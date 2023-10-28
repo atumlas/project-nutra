@@ -18,63 +18,67 @@ class InputManagerTest : public ::testing::Test {
         }
 };
 
-TEST_F(InputManagerTest, handlesKeyDown) {
+TEST_F(InputManagerTest, canHandleKeyDown) {
     // Arrange
     SDL_Event event;
     event.type           = SDL_KEYDOWN;
     event.key.keysym.sym = SDLK_a;
 
     // Act
-    inputManager->updateState(event);
+    inputManager->handleEvent(event);
 
     // Assert
-    ASSERT_TRUE(inputManager->getCurrentState().isKeyDown(KeyCode::A));
+    ASSERT_TRUE(inputManager->getCurrentState().isKey<INPUT_STATE_TYPE::KEY_DOWN>(KEYCODE::A));
 }
 
-TEST_F(InputManagerTest, handlesMouseButtonDown) {
+TEST_F(InputManagerTest, canHandleMouseButtonDown) {
     // Arrange
     SDL_Event event;
     event.type          = SDL_MOUSEBUTTONDOWN;
     event.button.button = SDL_BUTTON_LEFT;
 
     // Act
-    inputManager->updateState(event);
+    inputManager->handleEvent(event);
 
     // Assert
-    ASSERT_TRUE(inputManager->getCurrentState().isKeyDown(KeyCode::MOUSE_BUTTON_LEFT));
+    ASSERT_TRUE(inputManager->getCurrentState().isKey<INPUT_STATE_TYPE::KEY_DOWN>(KEYCODE::MOUSE_BUTTON_LEFT));
 }
 
-TEST_F(InputManagerTest, handlesKeyUp) {
+TEST_F(InputManagerTest, canHandleKeyUp) {
     // Arrange
     SDL_Event event;
     event.type           = SDL_KEYDOWN;
     event.key.keysym.sym = SDLK_a;
-    inputManager->updateState(event);
+    inputManager->handleEvent(event);
+    inputManager->beginNewFrame();
     SDL_Event upEvent;
     event.type           = SDL_KEYUP;
     event.key.keysym.sym = SDLK_a;
 
     // Act
-    inputManager->updateState(event);
+    inputManager->handleEvent(event);
 
     // Assert
-    ASSERT_FALSE(inputManager->getCurrentState().isKeyDown(KeyCode::A));
+    ASSERT_FALSE(inputManager->getCurrentState().isKey<INPUT_STATE_TYPE::KEY_PRESSED>(KEYCODE::A));
+    ASSERT_TRUE(inputManager->getCurrentState().isKey<INPUT_STATE_TYPE::KEY_UP>(KEYCODE::A));
 }
 
-TEST_F(InputManagerTest, handlesMouseButtonUp) {
+TEST_F(InputManagerTest, canHandleMouseButtonUp) {
     // Arrange
     SDL_Event event;
     event.type          = SDL_MOUSEBUTTONDOWN;
     event.button.button = SDL_BUTTON_LEFT;
-    inputManager->updateState(event);
+    inputManager->handleEvent(event);
+    inputManager->beginNewFrame();
     event.type          = SDL_MOUSEBUTTONUP;
     event.button.button = SDL_BUTTON_LEFT;
 
     // Act
-    inputManager->updateState(event);
+    inputManager->handleEvent(event);
 
     // Assert
-    ASSERT_FALSE(inputManager->getCurrentState().isKeyDown(KeyCode::MOUSE_BUTTON_LEFT));
+    ASSERT_FALSE(inputManager->getCurrentState().isKey<INPUT_STATE_TYPE::KEY_PRESSED>(KEYCODE::MOUSE_BUTTON_LEFT));
+    ASSERT_TRUE(inputManager->getCurrentState().isKey<INPUT_STATE_TYPE::KEY_UP>(KEYCODE::MOUSE_BUTTON_LEFT));
 }
 
 TEST_F(InputManagerTest, canMapActionToState) {
@@ -84,10 +88,10 @@ TEST_F(InputManagerTest, canMapActionToState) {
     event.key.keysym.sym = SDLK_LEFT;
 
     // Act
-    inputManager->updateState(event);
+    inputManager->handleEvent(event);
 
     // Assert
-    ASSERT_TRUE(inputManager->isActionDown(Action::MOVE_LEFT));
+    ASSERT_TRUE(inputManager->isAction<INPUT_STATE_TYPE::KEY_DOWN>(INPUT_ACTION::MOVE_LEFT));
 }
 
 TEST_F(InputManagerTest, canHandleSingleKeyUpForAction) {
@@ -95,21 +99,22 @@ TEST_F(InputManagerTest, canHandleSingleKeyUpForAction) {
     SDL_Event event;
     event.type           = SDL_KEYDOWN;
     event.key.keysym.sym = SDLK_LEFT;
-    inputManager->updateState(event);
+    inputManager->handleEvent(event);
     event.type           = SDL_KEYDOWN;
     event.key.keysym.sym = SDLK_a;
-    inputManager->updateState(event);
+    inputManager->handleEvent(event);
+    inputManager->beginNewFrame();
     event.type           = SDL_KEYUP;
     event.key.keysym.sym = SDLK_LEFT;
 
     // Act
-    inputManager->updateState(event);
+    inputManager->handleEvent(event);
 
     // Assert
-    ASSERT_TRUE(inputManager->isActionDown(Action::MOVE_LEFT));
+    ASSERT_TRUE(inputManager->isAction<INPUT_STATE_TYPE::KEY_PRESSED>(INPUT_ACTION::MOVE_LEFT));
 }
 
-TEST_F(InputManagerTest, CanHandleMouseMovement) {
+TEST_F(InputManagerTest, canHandleMouseMovement) {
     // Arrange
     SDL_Event event;
     event.type     = SDL_MOUSEMOTION;
@@ -117,7 +122,7 @@ TEST_F(InputManagerTest, CanHandleMouseMovement) {
     event.motion.y = 20;
 
     // Act
-    inputManager->updateState(event);
+    inputManager->handleEvent(event);
 
     // Assert
     ASSERT_EQ(inputManager->getCurrentState().getMouseX(), 10);

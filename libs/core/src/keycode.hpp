@@ -3,7 +3,7 @@
 #include "SDL2/SDL.h"
 
 namespace Nutra::Core {
-    enum class KeyCode : uint8_t {
+    enum class KEYCODE : uint8_t {
         UNKNOWN = 0,
         RETURN,
         ESCAPE,
@@ -252,6 +252,6 @@ namespace Nutra::Core {
         MOUSE_BUTTON_MIDDLE,
         MOUSE_BUTTON_RIGHT,
     };
-    KeyCode convertSDLKeyCodeToNutraKeyCode(SDL_Keycode & sdlKeyCode);
-    KeyCode convertSDLMouseButtonToNutraKeyCode(uint8_t sdlMouseButton);
+    [[nodiscard]] auto convertSDLKeyCodeToNutraKeyCode(SDL_Keycode & sdlKeyCode) -> KEYCODE;
+    [[nodiscard]] auto convertSDLMouseButtonToNutraKeyCode(uint8_t sdlMouseButton) -> KEYCODE;
 } // namespace Nutra::Core

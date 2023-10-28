@@ -10,19 +10,11 @@ namespace Nutra::Core {
         public:
             ~KeyCodeMapping() = default;
 
-            KeyCodeMapping & operator=(std::initializer_list<KeyCode> KeyCodes) {
-                for (auto const & keyCode : KeyCodes) {
-                    uint8_t keyCodeAsInt = static_cast<uint8_t>(keyCode);
-                    m_KeyCodeMapping[keyCodeAsInt / 64] |= 1ULL << (keyCodeAsInt % 64);
-                }
-                return *this;
-            }
+            KeyCodeMapping & operator=(std::initializer_list<KEYCODE> KeyCodes);
 
-            uint64_t & operator[](size_t index) {
-                return m_KeyCodeMapping[index];
-            }
+            [[nodiscard]] auto operator[](size_t index) -> uint64_t const &;
 
         private:
-            std::array<uint64_t, 4> m_KeyCodeMapping;
+            std::array<uint64_t, 4> m_key_code_mapping;
     };
 } // namespace Nutra::Core
