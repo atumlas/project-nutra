@@ -6,7 +6,7 @@
 
 #include "SDL2/SDL.h"
 
-#include "SDL_Instance.hpp"
+#include "sdl_instance.hpp"
 
 namespace Nutra::Core {
     class Window {
@@ -15,14 +15,14 @@ namespace Nutra::Core {
             Window(std::shared_ptr<SDL_Instance> sdl, std::string_view name, int x, int y, int width, int height,
                    Uint32 flags);
             ~Window();
-            [[nodiscard]] std::pair<int, int> getWindowSize(Window & window) noexcept;
-            void show() const noexcept;
-            [[nodiscard]] SDL_Renderer * createRenderer(SDL_Window * window, int index, Uint32 flags) noexcept;
+            [[nodiscard]] auto getWindowSize(Window & window) noexcept -> std::pair<int, int>;
+            auto show() const noexcept -> void;
+            [[nodiscard]] auto createRenderer(SDL_Window * window, int index, Uint32 flags) noexcept -> SDL_Renderer *;
 
             friend class Renderer;
 
         private:
-            std::shared_ptr<SDL_Instance> m_SDL_Instance;
+            std::shared_ptr<SDL_Instance> m_SdlInstance;
             SDL_Window * m_Window;
     };
 } // namespace Nutra::Core

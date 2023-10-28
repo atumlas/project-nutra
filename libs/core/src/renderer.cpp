@@ -1,4 +1,4 @@
-#include "Renderer.hpp"
+#include "renderer.hpp"
 
 #include <stdexcept>
 
@@ -13,14 +13,14 @@ Nutra::Core::Renderer::~Renderer() {
     SDL_DestroyRenderer(m_Renderer);
 }
 
-void Nutra::Core::Renderer::clear() noexcept {
+auto Nutra::Core::Renderer::clear() noexcept -> void {
     SDL_RenderClear(m_Renderer);
 }
 
-void Nutra::Core::Renderer::setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) noexcept {
+auto Nutra::Core::Renderer::setDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) noexcept -> void {
     SDL_SetRenderDrawColor(m_Renderer, r, g, b, a);
 }
 
-void Nutra::Core::Renderer::present() noexcept {
+auto Nutra::Core::Renderer::present() noexcept -> void {
     SDL_RenderPresent(m_Renderer);
 }

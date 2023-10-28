@@ -1,4 +1,4 @@
-#include "SDL_Instance.hpp"
+#include "sdl_instance.hpp"
 
 #include <format>
 #include <stdexcept>
@@ -14,11 +14,11 @@ Nutra::Core::SDL_Instance::~SDL_Instance() {
     SDL_Quit();
 }
 
-[[nodiscard]] int Nutra::Core::SDL_Instance::pollEvent(SDL_Event * event) noexcept {
+[[nodiscard]] auto Nutra::Core::SDL_Instance::pollEvent(SDL_Event * event) noexcept -> int {
     return SDL_PollEvent(event);
 }
 
-[[nodiscard]] SDL_Window * Nutra::Core::SDL_Instance::createWindow(char const * name, int x, int y, int width,
-                                                                   int height, Uint32 flags) noexcept {
+[[nodiscard]] auto Nutra::Core::SDL_Instance::createWindow(char const * name, int x, int y, int width, int height,
+                                                           Uint32 flags) noexcept -> SDL_Window * {
     return SDL_CreateWindow(name, x, y, width, height, flags);
 }
