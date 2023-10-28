@@ -1,5 +1,7 @@
 #include "input_manager.hpp"
 
+#include <ranges>
+
 Nutra::Core::InputManager::InputManager() {
     m_currentInputState = std::make_unique<InputState>();
     setDefaultKeyMap();
@@ -60,7 +62,7 @@ auto Nutra::Core::InputManager::getCurrentState() const noexcept -> Nutra::Core:
 }
 
 auto Nutra::Core::InputManager::beginNewFrame() -> void {
-    for (auto index : {0, 1, 2, 3}) {
+    for (auto index : std::views::iota(0, 4)) {
         m_currentInputState->m_keyDownState[index] = 0;
         m_currentInputState->m_keyUpState[index]   = 0;
     }

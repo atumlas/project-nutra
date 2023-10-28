@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <ranges>
 #include <stdexcept>
 #include <unordered_map>
 #include <vector>
@@ -40,7 +41,7 @@ namespace Nutra::Core {
                 } else {
                     throw std::runtime_error("Invalid input state type");
                 }
-                for (auto index : {0, 1, 2, 3}) {
+                for (auto index : std::views::iota(0, 4)) {
                     isKeyDown = keyState[index] & keyCodeMapping[index];
                     if (isKeyDown) {
                         break;

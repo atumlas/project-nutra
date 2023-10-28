@@ -6,7 +6,7 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build:
+  test:
     runs-on: windows-latest
     env:
       BUILD_TYPE: ${{matrix.buildtypes}}
