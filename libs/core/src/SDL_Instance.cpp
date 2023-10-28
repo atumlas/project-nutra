@@ -1,4 +1,4 @@
-#include "SDL_Instance.hpp"
+#include "sdl_instance.hpp"
 
 #include <format>
 #include <stdexcept>

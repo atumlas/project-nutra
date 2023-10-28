@@ -33,11 +33,11 @@ namespace Nutra::Core {
                 std::array<uint64_t, 4> keyState;
 
                 if constexpr (inputStateType == INPUT_STATE_TYPE::KEY_DOWN) {
-                    keyState = m_currentInputState->m_keyDownState;
+                    keyState = m_currentInputState->m_KeyDownState;
                 } else if constexpr (inputStateType == INPUT_STATE_TYPE::KEY_UP) {
-                    keyState = m_currentInputState->m_keyUpState;
+                    keyState = m_currentInputState->m_KeyUpState;
                 } else if constexpr (inputStateType == INPUT_STATE_TYPE::KEY_PRESSED) {
-                    keyState = m_currentInputState->m_keyPressedState;
+                    keyState = m_currentInputState->m_KeyPressedState;
                 } else {
                     throw std::runtime_error("Invalid input state type");
                 }

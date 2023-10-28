@@ -6,9 +6,9 @@
 #include <string>
 #include <string_view>
 
-#include "../libs/core/src/Renderer.hpp"
-#include "../libs/core/src/SDL_Instance.hpp"
-#include "../libs/core/src/Window.hpp"
+#include "../libs/core/src/renderer.hpp"
+#include "../libs/core/src/sdl_instance.hpp"
+#include "../libs/core/src/window.hpp"
 
 namespace Nutra::Game {
     class Application {
@@ -22,9 +22,9 @@ namespace Nutra::Game {
         private:
             std::string m_ApplicationName;
 
-            std::shared_ptr<Nutra::Core::SDL_Instance> m_sdlInstance;
-            std::shared_ptr<Nutra::Core::Window> m_window;
-            std::unique_ptr<Nutra::Core::Renderer> m_renderer;
+            std::shared_ptr<Nutra::Core::SDL_Instance> m_SdlInstance;
+            std::shared_ptr<Nutra::Core::Window> m_Window;
+            std::unique_ptr<Nutra::Core::Renderer> m_Renderer;
 
             bool m_Running;
 

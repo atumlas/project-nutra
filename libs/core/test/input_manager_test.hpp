@@ -2,8 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <utility>
-
 using namespace Nutra::Core;
 class InputManagerTest : public ::testing::Test {
     public:

@@ -4,7 +4,7 @@
 
 #include "SDL2/SDL.h"
 
-#include "Window.hpp"
+#include "window.hpp"
 
 namespace Nutra::Core {
     class Renderer {
@@ -16,7 +16,7 @@ namespace Nutra::Core {
             auto present() noexcept -> void;
 
         private:
-            SDL_Renderer * m_renderer;
-            std::shared_ptr<Window> m_window;
+            SDL_Renderer * m_Renderer;
+            std::shared_ptr<Window> m_Window;
     };
 } // namespace Nutra::Core

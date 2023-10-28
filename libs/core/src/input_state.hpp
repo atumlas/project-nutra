@@ -24,11 +24,11 @@ namespace Nutra::Core {
             [[nodiscard]] auto isKey(KEYCODE key) const -> bool {
                 uint8_t keyAsInt = static_cast<uint8_t>(key);
                 if constexpr (inputStateType == INPUT_STATE_TYPE::KEY_DOWN) {
-                    return m_keyDownState[keyAsInt / 64] & (1ULL << (keyAsInt % 64));
+                    return m_KeyDownState[keyAsInt / 64] & (1ULL << (keyAsInt % 64));
                 } else if constexpr (inputStateType == INPUT_STATE_TYPE::KEY_UP) {
-                    return m_keyUpState[keyAsInt / 64] & (1ULL << (keyAsInt % 64));
+                    return m_KeyUpState[keyAsInt / 64] & (1ULL << (keyAsInt % 64));
                 } else if constexpr (inputStateType == INPUT_STATE_TYPE::KEY_PRESSED) {
-                    return m_keyPressedState[keyAsInt / 64] & (1ULL << (keyAsInt % 64));
+                    return m_KeyPressedState[keyAsInt / 64] & (1ULL << (keyAsInt % 64));
                 } else {
                     throw std::runtime_error("Invalid input state type");
                 }
@@ -37,10 +37,10 @@ namespace Nutra::Core {
             friend class InputManager;
 
         private:
-            int m_mouse_x;
-            int m_mouse_y;
-            std::array<uint64_t, 4> m_keyPressedState;
-            std::array<uint64_t, 4> m_keyDownState;
-            std::array<uint64_t, 4> m_keyUpState;
+            int m_MouseX;
+            int m_MouseY;
+            std::array<uint64_t, 4> m_KeyPressedState;
+            std::array<uint64_t, 4> m_KeyDownState;
+            std::array<uint64_t, 4> m_KeyUpState;
     };
 } // namespace Nutra::Core

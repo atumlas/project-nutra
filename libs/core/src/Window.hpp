@@ -6,7 +6,7 @@
 
 #include "SDL2/SDL.h"
 
-#include "SDL_Instance.hpp"
+#include "sdl_instance.hpp"
 
 namespace Nutra::Core {
     class Window {
@@ -22,7 +22,7 @@ namespace Nutra::Core {
             friend class Renderer;
 
         private:
-            std::shared_ptr<SDL_Instance> m_sdlInstance;
-            SDL_Window * m_window;
+            std::shared_ptr<SDL_Instance> m_SdlInstance;
+            SDL_Window * m_Window;
     };
 } // namespace Nutra::Core

@@ -1,5 +1,5 @@
 # configure nutra config to show version
-configure_file(nutra-config.hpp.in nutra-config.hpp)
+configure_file(nutra_config.hpp.in nutra_config.hpp)
 
 file(GLOB_RECURSE NUTRA_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB_RECURSE NUTRA_HEADER_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp)

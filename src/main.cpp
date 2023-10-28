@@ -1,8 +1,8 @@
 #include "application.hpp"
 
-#include "../libs/core/src/SDL_Instance.hpp"
+#include "../libs/core/src/sdl_instance.hpp"
 
-#include "nutra-config.hpp"
+#include "nutra_config.hpp"
 
 #include <format>
 #include <iostream>

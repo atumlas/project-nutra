@@ -15,6 +15,6 @@ namespace Nutra::Core {
             [[nodiscard]] auto operator[](size_t index) -> uint64_t const &;
 
         private:
-            std::array<uint64_t, 4> m_key_code_mapping;
+            std::array<uint64_t, 4> m_KeyCodeMapping;
     };
 } // namespace Nutra::Core

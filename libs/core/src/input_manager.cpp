@@ -18,38 +18,38 @@ auto Nutra::Core::InputManager::handleEvent(SDL_Event & event) -> void {
     switch (event.type) {
     case SDL_MOUSEMOTION:
         {
-            m_currentInputState->m_mouse_x = event.motion.x;
-            m_currentInputState->m_mouse_y = event.motion.y;
+            m_currentInputState->m_MouseX = event.motion.x;
+            m_currentInputState->m_MouseY = event.motion.y;
             break;
         }
     case SDL_MOUSEBUTTONDOWN:
         {
             uint8_t keyCode =
                 static_cast<uint8_t>(Nutra::Core::convertSDLMouseButtonToNutraKeyCode(event.button.button));
-            m_currentInputState->m_keyPressedState[keyCode / 64] |= 1ULL << (keyCode % 64);
-            m_currentInputState->m_keyDownState[keyCode / 64] |= 1ULL << (keyCode % 64);
+            m_currentInputState->m_KeyPressedState[keyCode / 64] |= 1ULL << (keyCode % 64);
+            m_currentInputState->m_KeyDownState[keyCode / 64] |= 1ULL << (keyCode % 64);
             break;
         }
     case SDL_MOUSEBUTTONUP:
         {
             uint8_t keyCode =
                 static_cast<uint8_t>(Nutra::Core::convertSDLMouseButtonToNutraKeyCode(event.button.button));
-            m_currentInputState->m_keyPressedState[keyCode / 64] ^= 1ULL << (keyCode % 64);
-            m_currentInputState->m_keyUpState[keyCode / 64] |= 1ULL << (keyCode % 64);
+            m_currentInputState->m_KeyPressedState[keyCode / 64] ^= 1ULL << (keyCode % 64);
+            m_currentInputState->m_KeyUpState[keyCode / 64] |= 1ULL << (keyCode % 64);
             break;
         }
     case SDL_KEYDOWN:
         {
             uint8_t keyCode = static_cast<uint8_t>(Nutra::Core::convertSDLKeyCodeToNutraKeyCode(event.key.keysym.sym));
-            m_currentInputState->m_keyPressedState[keyCode / 64] |= 1ULL << (keyCode % 64);
-            m_currentInputState->m_keyDownState[keyCode / 64] |= 1ULL << (keyCode % 64);
+            m_currentInputState->m_KeyPressedState[keyCode / 64] |= 1ULL << (keyCode % 64);
+            m_currentInputState->m_KeyDownState[keyCode / 64] |= 1ULL << (keyCode % 64);
             break;
         }
     case SDL_KEYUP:
         {
             uint8_t keyCode = static_cast<uint8_t>(Nutra::Core::convertSDLKeyCodeToNutraKeyCode(event.key.keysym.sym));
-            m_currentInputState->m_keyPressedState[keyCode / 64] ^= 1ULL << (keyCode % 64);
-            m_currentInputState->m_keyUpState[keyCode / 64] |= 1ULL << (keyCode % 64);
+            m_currentInputState->m_KeyPressedState[keyCode / 64] ^= 1ULL << (keyCode % 64);
+            m_currentInputState->m_KeyUpState[keyCode / 64] |= 1ULL << (keyCode % 64);
             break;
         }
     default:
@@ -63,7 +63,7 @@ auto Nutra::Core::InputManager::getCurrentState() const noexcept -> Nutra::Core:
 
 auto Nutra::Core::InputManager::beginNewFrame() -> void {
     for (auto index : std::views::iota(0, 4)) {
-        m_currentInputState->m_keyDownState[index] = 0;
-        m_currentInputState->m_keyUpState[index]   = 0;
+        m_currentInputState->m_KeyDownState[index] = 0;
+        m_currentInputState->m_KeyUpState[index]   = 0;
     }
 }
