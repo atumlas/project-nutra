@@ -20,6 +20,7 @@ message(STATUS "")
 
 # Dependencies
 add_github_dependency(SDL libsdl-org/SDL release-2.28.3)
+add_github_dependency(spdlog gabime/spdlog v1.12.0)
 
 # Subdirectories
 add_subdirectory(libs)
