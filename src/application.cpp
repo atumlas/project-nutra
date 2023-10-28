@@ -2,14 +2,16 @@
 
 #include "../libs/core/src/input_manager.hpp"
 
-Nutra::Game::Application::Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, char const * name)
-    : m_ApplicationName(name), m_SdlInstance(sdl) {
-    initialize();
+Nutra::Game::Application::Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, char const * name,
+                                      Nutra::Core::Scene * initialScene)
+    : m_ApplicationName(name), m_SdlInstance(sdl), m_InitialScene(initialScene) {
+    this->initialize();
 }
 
-Nutra::Game::Application::Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, std::string name)
+Nutra::Game::Application::Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, std::string name,
+                                      Nutra::Core::Scene * initialScene)
     : m_ApplicationName(name), m_SdlInstance(sdl) {
-    initialize();
+    this->initialize();
 }
 
 auto Nutra::Game::Application::initialize() -> void {
@@ -24,9 +26,9 @@ auto Nutra::Game::Application::run() noexcept -> void {
     m_Running = true;
     m_Window->show();
     while (m_Running) {
-        handleEvents();
-        update();
-        render();
+        this->handleEvents();
+        this->update();
+        this->render();
     }
 }
 
