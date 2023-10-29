@@ -14,8 +14,10 @@
 namespace Nutra::Game {
     class Application {
         public:
-            explicit Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, char const * name, Nutra::Core::Scene * initialScene);
-            explicit Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, std::string name, Nutra::Core::Scene * initialScene);
+            explicit Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, char const * name,
+                                 std::unique_ptr<Nutra::Core::Scene> initialScene);
+            explicit Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, std::string name,
+                                 std::unique_ptr<Nutra::Core::Scene>  initialScene);
             ~Application() = default;
 
             auto run() noexcept -> void;
@@ -27,7 +29,7 @@ namespace Nutra::Game {
             std::shared_ptr<Nutra::Core::Window> m_Window;
             std::unique_ptr<Nutra::Core::Renderer> m_Renderer;
 
-            Nutra::Core::Scene * m_InitialScene;
+            std::unique_ptr<Nutra::Core::Scene> m_CurrentScene;
 
             bool m_Running;
 
