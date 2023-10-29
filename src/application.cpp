@@ -4,12 +4,12 @@
 
 Nutra::Game::Application::Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, char const * name)
     : m_ApplicationName(name), m_SdlInstance(sdl) {
-    initialize();
+    this->initialize();
 }
 
 Nutra::Game::Application::Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, std::string name)
     : m_ApplicationName(name), m_SdlInstance(sdl) {
-    initialize();
+    this->initialize();
 }
 
 auto Nutra::Game::Application::initialize() -> void {
@@ -24,9 +24,9 @@ auto Nutra::Game::Application::run() noexcept -> void {
     m_Running = true;
     m_Window->show();
     while (m_Running) {
-        handleEvents();
-        update();
-        render();
+        this->handleEvents();
+        this->update();
+        this->render();
     }
 }
 
