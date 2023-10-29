@@ -14,13 +14,17 @@
 namespace Nutra::Game {
     class Application {
         public:
-            explicit Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, char const * name,
-                                 std::unique_ptr<Nutra::Core::Scene> initialScene);
-            explicit Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, std::string name,
-                                 std::unique_ptr<Nutra::Core::Scene>  initialScene);
+            explicit Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, char const * name);
+            explicit Application(std::shared_ptr<Nutra::Core::SDL_Instance> sdl, std::string name);
             ~Application() = default;
 
             auto run() noexcept -> void;
+
+            template <typename T, class... Args>
+            auto setCurrentScene(Args &&... args) -> void {
+               Nutra::Core::Scene * scene = static_cast<Nutra::Core::Scene*>(new T(std::forward<Args>(args)...));
+               m_CurrentScene = std::unique_ptr<Nutra::Core::Scene>(scene);
+            }
 
         private:
             std::string m_ApplicationName;

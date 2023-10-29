@@ -14,9 +14,11 @@ namespace Nutra::Core {
 
         public:
             Scene(std::string id);
+            Scene(char const * id);
+            Scene();
             virtual ~Scene() = default;
 
-            virtual void onCreate() = 0;
+            virtual void onCreate()  = 0;
             virtual void onDestroy() = 0;
     };
 } // namespace Nutra::Core

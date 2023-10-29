@@ -1,6 +1,6 @@
 #include "main_menu.hpp"
 
-Nutra::Game::MainMenu::MainMenu() : Scene("MainMenuScene") {
+Nutra::Game::MainMenu::MainMenu() : Scene() {
 }
 
 void Nutra::Game::MainMenu::onCreate() {
